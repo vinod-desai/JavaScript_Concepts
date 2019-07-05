@@ -71,3 +71,29 @@ for (let i = 0; i < arr2.length; i++) {
     console.log("The index of this number is: " + i);
   }, 3000);
 }
+
+console.log("Abcd" && "EFGH"); // EFGH
+
+var name = "MS Dhoni";
+function foo(){
+  name = "Virat Kohli";
+  return;
+  function name(){
+  }
+}
+foo();
+console.log(name); // MS Dhoni
+
+function foo(){
+ function bar(){
+   return 5;
+ }
+  return bar();
+  function bar(){
+    return 6;
+  }
+  function bar(){
+    return 7;
+  }
+}
+console.log(foo()); // 7
