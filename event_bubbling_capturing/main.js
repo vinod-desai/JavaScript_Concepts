@@ -8,6 +8,7 @@ const evtCapturingDivs = document.querySelectorAll('.evt-capturing div');
 
 function handleClick(e) {
     console.log(this.className);
+    e.stopPropagation();
 }
 
 function handleBodyClick(e) {
