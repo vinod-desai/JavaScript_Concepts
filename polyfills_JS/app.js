@@ -1,4 +1,4 @@
-let myArray = [1,2,3,4,5];
+let myArray = [1,2,3,4,5, 6, -6, 10];
 
 const double = (item) => item * 2;
 const triple = (item) => item * 3;
@@ -60,10 +60,38 @@ Array.prototype.myFilter = function(fn){
 const getEvenNumbers = (num) =>  num % 2 === 0 ;
 const getOddNumbers = (num) => num % 2 !== 0;
 
-let newArray = myArray.myFilter(getOddNumbers);
+// let newArray = myArray.myFilter(getOddNumbers);
 
-console.log(myArray);
-console.log(newArray);
+// console.log(myArray);
+// console.log(newArray);
 
 
 // // Polyfill for array reduce method
+
+const initValue = 0;
+
+// let sum = myArray.reduce(function(total, currValue, index, arr){
+//     // console.log(total, currValue, index, arr);
+//     return total += currValue;
+// }, initValue);
+
+const add = (total, val) => total + val;
+
+Array.prototype.myReduce = function(fn, initVal){
+    let sum = 0;
+    const context = this;
+    for(let i=0; i<context.length; i++){
+        if(i === 0){
+           sum = fn(initVal, context[i]);
+        } else {
+           sum = fn(sum, context[i]);
+        }
+        
+    }
+    return sum;
+}
+
+let sum = myArray.myReduce(add, 0);
+
+console.log(myArray);
+console.log(sum);
